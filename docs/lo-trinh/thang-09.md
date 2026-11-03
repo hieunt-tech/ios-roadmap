@@ -3,7 +3,7 @@
 **Mục tiêu:** tự đưa app từ commit tới tay người dùng: signing, TestFlight, pipeline tự động, theo dõi crash, phát hành an toàn.
 **Đầu ra cuối tháng:** Mốc **M3** (mỗi PR tự chạy test, build tự lên TestFlight không cần thao tác tay) và bài kiểm tra năng lực **lần 3**.
 
-[← Tháng 8](thang-08.md) · [Mục lục](../../README.md) · [Tháng 10 →](thang-10.md)
+[← Tháng 8](thang-08.md) · [Mục lục](../../README.md) · [Tháng 10 →](thang-10.md) · Học sâu hơn: [Chuyên đề B — CI/CD & Release Engineering](../chuyen-de/ci-cd-release-engineering.md)
 
 ---
 

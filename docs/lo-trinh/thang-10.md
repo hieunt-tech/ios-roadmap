@@ -5,7 +5,7 @@
 
 API trong tháng này thay đổi theo từng năm. Trước mỗi buổi, đối chiếu với tài liệu Apple và video WWDC26 tương ứng; ví dụ ở đây viết theo API đã có từ iOS 26.
 
-[← Tháng 9](thang-09.md) · [Mục lục](../../README.md) · [Tháng 11 →](thang-11.md)
+[← Tháng 9](thang-09.md) · [Mục lục](../../README.md) · [Tháng 11 →](thang-11.md) · Học sâu hơn: [Chuyên đề A — AI trên iOS](../chuyen-de/ai-tren-ios.md)
 
 ---
 

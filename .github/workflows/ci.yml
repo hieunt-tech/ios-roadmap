@@ -1,27 +1,60 @@
 name: ConcurrencyLab
 
+# Workflow mẫu cho Chuyên đề B (CI/CD & Release Engineering), buổi 3–7:
+# quyền tối thiểu, huỷ lần chạy cũ, giới hạn thời gian, cache theo khoá đúng,
+# đính kèm kết quả khi thất bại. Bài tập Buổi 7: ghim mọi action theo commit SHA.
+
 on:
   push:
+    branches: [main]
   pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
+    name: test (${{ matrix.mode }})
     runs-on: macos-15
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         mode: [solution, exercises]
+    env:
+      TZ: Asia/Ho_Chi_Minh
+      LANG: en_US.UTF-8
     steps:
       - uses: actions/checkout@v4
 
-      - name: Swift version
-        run: swift --version
+      - name: Phiên bản công cụ
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Cache SwiftPM
+        uses: actions/cache@v4
+        with:
+          path: .build
+          key: spm-${{ runner.os }}-${{ matrix.mode }}-${{ hashFiles('Package.swift', 'Package.resolved') }}
 
       - name: Đáp án (phải xanh, kèm Thread Sanitizer)
         if: matrix.mode == 'solution'
-        run: swift test -Xswiftc -DSOLUTION --sanitize=thread
+        run: swift test -Xswiftc -DSOLUTION --sanitize=thread 2>&1 | tee test.log
 
       # Job này ĐỎ cho tới khi bạn làm xong cả 5 bài. Đó là thanh tiến độ của bạn.
       - name: Bài làm
         if: matrix.mode == 'exercises'
-        run: swift test --sanitize=thread
+        run: swift test --sanitize=thread 2>&1 | tee test.log
+
+      - name: Lưu log khi thất bại
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-log-${{ matrix.mode }}
+          path: test.log
+          retention-days: 7

@@ -3,7 +3,7 @@
 **Mục tiêu:** chuyển từ "làm tốt việc của mình" sang "giúp team làm tốt hơn": review, viết tài liệu kỹ thuật, ước lượng, mentor, xử lý sự cố, làm việc với AI agent có kiểm soát. Hoàn thiện dự án xuyên suốt và làm bài kiểm tra tổng.
 **Đầu ra cuối tháng:** Mốc **M4** hoàn chỉnh, bài kiểm tra năng lực **lần 4** (mục tiêu ≥ 80), một bài trình bày kỹ thuật 20 phút.
 
-[← Tháng 11](thang-11.md) · [Mục lục](../../README.md)
+[← Tháng 11](thang-11.md) · [Mục lục](../../README.md) · [Chuyên đề A →](../chuyen-de/ai-tren-ios.md)
 
 ---
 
