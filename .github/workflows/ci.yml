@@ -1,0 +1,27 @@
+name: ConcurrencyLab
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [solution, exercises]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Swift version
+        run: swift --version
+
+      - name: Đáp án (phải xanh, kèm Thread Sanitizer)
+        if: matrix.mode == 'solution'
+        run: swift test -Xswiftc -DSOLUTION --sanitize=thread
+
+      # Job này ĐỎ cho tới khi bạn làm xong cả 5 bài. Đó là thanh tiến độ của bạn.
+      - name: Bài làm
+        if: matrix.mode == 'exercises'
+        run: swift test --sanitize=thread
